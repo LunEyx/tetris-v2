@@ -18,7 +18,18 @@ const Tetris = forwardRef<TetrisProps, 'div'>((props, ref) => {
       {board.map((row, rowIndex) => (
         <Fragment key={rowIndex}>
           {row.map((color, cellIndex) => {
-            const bg = color === TetrisBlockColor.EMPTY ? 'gray.800' : color
+            let bg = 'gray.800'
+            switch (color) {
+              case TetrisBlockColor.EMPTY:
+                bg = 'gray.800'
+                break
+              case TetrisBlockColor.SHADOW:
+                bg = 'gray.200'
+                break
+              default:
+                bg = color
+            }
+
             const opacity =
               color === TetrisBlockColor.EMPTY
                 ? (rowIndex + cellIndex) % 2 === 0

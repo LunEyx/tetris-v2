@@ -6,12 +6,12 @@ import useTetris from '../../hooks/useTetris'
 import { TetrisState } from '../../types/tetris'
 
 const SinglePlayerContainer: FC = () => {
-  const { board, state, start, left, right, down, up } = useTetris()
+  const { board, state, start, left, right, softDrop, hardDrop, rotateCw } =
+    useTetris()
   const ref = useRef<any>(null)
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
-      console.log('handleKeyPress', event.key)
       switch (event.key) {
         case 'ArrowLeft':
           left()
@@ -20,10 +20,13 @@ const SinglePlayerContainer: FC = () => {
           right()
           break
         case 'ArrowDown':
-          down()
+          softDrop()
+          break
+        case ' ':
+          hardDrop()
           break
         case 'ArrowUp':
-          up()
+          rotateCw()
           break
         default:
           break
@@ -33,7 +36,7 @@ const SinglePlayerContainer: FC = () => {
     window.addEventListener('keydown', handleKeyPress)
 
     return () => window.removeEventListener('keydown', handleKeyPress)
-  }, [left, right, down, up])
+  }, [left, right, softDrop, hardDrop, rotateCw])
 
   const handleStartClick = () => {
     start()
