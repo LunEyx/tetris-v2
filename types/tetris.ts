@@ -1,12 +1,13 @@
 export enum TetrisBlockColor {
   EMPTY = 'EMPTY',
-  RED = 'RED',
-  GREEN = 'GREEN',
-  BLUE = 'BLUE',
-  YELLOW = 'YELLOW',
-  PURPLE = 'PURPLE',
-  CYAN = 'CYAN',
-  ORANGE = 'ORANGE',
+  SHADOW = 'SHADOW',
+  RED = 'red.500',
+  GREEN = 'green.500',
+  BLUE = 'blue.500',
+  YELLOW = 'yellow.500',
+  PURPLE = 'pink.800',
+  CYAN = 'cyan.500',
+  ORANGE = 'orange.500',
 }
 
 export interface TetrisBlock {
